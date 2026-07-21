@@ -1,0 +1,44 @@
+Experiment 1.1 conatin duplicate (leetcode 217)
+Aim -
+To determine whether an integer array contains any duplicate elements by implementing an efficient algorithm in Python.
+
+Algorithm-
+Sort the given array nums.
+Traverse the array from the second element to the last.
+Compare the current element with the previous element.
+If both elements are equal, return True (duplicate found).
+If no duplicates are found after traversing the array, return False.
+
+Code-
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        nums.sort()
+        for i in range(1,len(nums)):
+            if nums[i]==nums[i-1]:
+                return True
+        return False
+
+
+Experiment 1.2 contain duplicate-2( leetcode 219)
+Aim-
+To determine whether an array contains two equal elements such that the absolute difference between their indices is less than or equal to a given integer k.
+
+Algorithm -
+Create an empty hash map (dictionary) to store each element and its latest index.
+Traverse the array from the first element to the last.
+For each element:
+If the element is already present in the hash map, calculate the difference between the current index and the stored index.
+If the difference is less than or equal to k, return True.
+Update the element's index in the hash map.
+If the traversal completes without finding such a pair, return False.
+
+CODE-
+ class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        dict = {}
+        for i in range(0,len(nums)):
+            if nums[i] in dict and abs(i-dict[nums[i]])<=k:
+                return True
+
+            dict[nums[i]] = i
+        return False
